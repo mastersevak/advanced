@@ -30,7 +30,7 @@ class Companies extends \yii\db\ActiveRecord{
 			[['company_naem', 'company_email', 'company_addres', 'company_creates_date', 'company_status'], 'required'],
 			[['company_creates_date', 'company_start_date'], 'safe'],
 			[['company_status'], 'string'],
-			[['company_naem', 'company_email', 'company_addres'], 'string', 'max' => 100]
+			[['company_naem', 'logo', 'company_email', 'company_addres'], 'string', 'max' => 100]
 		];
 	}
 
@@ -43,6 +43,7 @@ class Companies extends \yii\db\ActiveRecord{
 			'company_naem' => Yii::t('settings', 'Company Naem'),
 			'company_email' => Yii::t('settings', 'Company Email'),
 			'company_addres' => Yii::t('settings', 'Company Addres'),
+			'logo' => Yii::t('settings', 'Logo'),
 			'company_start_date' => Yii::t('settings', 'Company Start Date'),
 			'company_creates_date' => Yii::t('settings', 'Company Creates Date'),
 			'company_status' => Yii::t('settings', 'Company Status'),

@@ -8,14 +8,15 @@ use backend\models\CompaniesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+use yii\web\ForbiddenHttpException;
 
 /**
  * CompaniesController implements the CRUD actions for Companies model.
  */
-class CompaniesController extends Controller
-{
-	public function behaviors()
-	{
+class CompaniesController extends Controller{
+
+	public function behaviors(){
 		return [
 			'verbs' => [
 				'class' => VerbFilter::className(),
@@ -30,8 +31,8 @@ class CompaniesController extends Controller
 	 * Lists all Companies models.
 	 * @return mixed
 	 */
-	public function actionIndex()
-	{
+	public function actionIndex(){
+
 		$searchModel = new CompaniesSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -46,8 +47,8 @@ class CompaniesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionView($id)
-	{
+	public function actionView($id){
+
 		return $this->render('view', [
 			'model' => $this->findModel($id),
 		]);
@@ -58,20 +59,32 @@ class CompaniesController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
-	public function actionCreate()
-	{
-		$model = new Companies();
+	public function actionCreate(){
 
-		if ($model->load( Yii::$app->request->post() )){
-			$model->company_creates_date = date('Y-m-d h:m:s');
-			$model->save();
-			return $this->redirect(['view', 'id' => $model->company_id]);
-		}
-		else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
-		}
+		// access to create company
+		if( Yii::$app->user->can( 'create-company' ) ) :
+
+			$model = new Companies();
+
+			if ($model->load( Yii::$app->request->post() )){
+
+				$imgName = $model->company_naem;
+				// get the instance of the uploaded file
+				$model->file = UploadedFile::getInstance($model, 'file'); // get 2 parameters
+				$model->file->saveAs('uploades/' . $imgName.'.'.$model->file->extension); // defoult path advanced/backend/web
+
+				// save the file path in the DB column
+				$model->logo = 'uploades/'.$imgName.'.'.$model->file->extension;
+
+				$model->company_creates_date = date('Y-m-d h:m:s');
+				$model->save();
+				return $this->redirect(['view', 'id' => $model->company_id]);
+			}
+
+			else return $this->render('create', ['model' => $model ]);
+		else :
+			throw new ForbiddenHttpException;
+		endif;
 	}
 
 	/**
@@ -80,8 +93,8 @@ class CompaniesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionUpdate($id)
-	{
+	public function actionUpdate($id) {
+
 		$model = $this->findModel($id);
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -99,8 +112,8 @@ class CompaniesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionDelete($id)
-	{
+	public function actionDelete($id) {
+
 		$this->findModel($id)->delete();
 
 		return $this->redirect(['index']);
@@ -113,8 +126,8 @@ class CompaniesController extends Controller
 	 * @return Companies the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
-	protected function findModel($id)
-	{
+	protected function findModel($id){
+
 		if (($model = Companies::findOne($id)) !== null) {
 			return $model;
 		} else {

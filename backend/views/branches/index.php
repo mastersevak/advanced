@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use backend\models\Branches;
-
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BranchesSearch */
@@ -21,26 +21,28 @@ $this->params['breadcrumbs'][] = $this->title;
 	<p>
 		<?= Html::a(Yii::t('app', 'Create Branches'), ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
+	<? Pjax::begin(); // for GridView ajax search in index page ?>
+		<?= GridView::widget([
+			'dataProvider' => $dataProvider,
+			'filterModel' => $searchModel,
+			'columns' => [
+				['class' => 'yii\grid\SerialColumn'],
+				[
+					'attribute'	=> 'companies_company_id',
+					'value'		=> 'companiesCompany.company_naem',
+				],
+				'branch_name',
+				'branch_address',
+				'branch_created_date',
+				[	// status filter dropDownList['active', 'inactive']
+					'attribute'	=> 'branch_status',
+					'filter'	=>	ArrayHelper::map(Branches::find()->all(), 'branch_status', 'branch_status'),
+				],
 
-	<?= GridView::widget([
-		'dataProvider' => $dataProvider,
-		'filterModel' => $searchModel,
-		'columns' => [
-			['class' => 'yii\grid\SerialColumn'],
-			[
-				'attribute'	=> 'companies_company_id',
-				'value'		=> 'companiesCompany.company_naem',
+				['class' => 'yii\grid\ActionColumn'],
 			],
-			'branch_name',
-			'branch_address',
-			'branch_created_date',
-			[	// status filter dropDownList['active', 'inactive']
-				'attribute'	=> 'branch_status',
-				'filter'	=>	ArrayHelper::map(Branches::find()->all(), 'branch_status', 'branch_status'),
-			],
+		]); ?>
 
-			['class' => 'yii\grid\ActionColumn'],
-		],
-	]); ?>
+	<? Pjax::end(); ?>
 
 </div>

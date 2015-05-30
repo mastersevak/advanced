@@ -8,14 +8,15 @@ use backend\models\BranchesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * BranchesController implements the CRUD actions for Branches model.
  */
-class BranchesController extends Controller
-{
-	public function behaviors()
-	{
+class BranchesController extends Controller {
+
+	public function behaviors() {
+
 		return [
 			'verbs' => [
 				'class' => VerbFilter::className(),
@@ -30,8 +31,8 @@ class BranchesController extends Controller
 	 * Lists all Branches models.
 	 * @return mixed
 	 */
-	public function actionIndex()
-	{
+	public function actionIndex() {
+
 		$searchModel = new BranchesSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -46,11 +47,8 @@ class BranchesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionView($id)
-	{
-		return $this->render('view', [
-			'model' => $this->findModel($id),
-		]);
+	public function actionView($id) {
+		return $this->render('view', ['model' => $this->findModel($id)]);
 	}
 
 	/**
@@ -58,20 +56,26 @@ class BranchesController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
-	public function actionCreate()
-	{
-		$model = new Branches();
+	public function actionCreate() {
 
-		if ($model->load(Yii::$app->request->post())){
 
-			$model->branch_created_date = date('Y-m-d h:m:s');
-			$model->save();
-			return $this->redirect(['view', 'id' => $model->branch_id]);
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
-		}
+		// access to create branche
+		if( Yii::$app->user->can( 'create-branch' ) ) :
+
+			$model = new Branches();
+
+			if ($model->load(Yii::$app->request->post())){
+
+				$model->branch_created_date = date('Y-m-d h:m:s');
+				$model->save();
+				return $this->redirect(['view', 'id' => $model->branch_id]);
+			}
+
+			else return $this->render('create', ['model' => $model]);
+
+		else :
+			throw new ForbiddenHttpException;
+		endif;
 	}
 
 	/**
@@ -80,8 +84,8 @@ class BranchesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionUpdate($id)
-	{
+	public function actionUpdate($id) {
+
 		$model = $this->findModel($id);
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -99,8 +103,8 @@ class BranchesController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionDelete($id)
-	{
+	public function actionDelete($id) {
+
 		$this->findModel($id)->delete();
 
 		return $this->redirect(['index']);
@@ -113,8 +117,8 @@ class BranchesController extends Controller
 	 * @return Branches the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
-	protected function findModel($id)
-	{
+	protected function findModel($id) {
+
 		if (($model = Branches::findOne($id)) !== null) {
 			return $model;
 		} else {
