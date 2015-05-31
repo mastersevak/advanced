@@ -15,6 +15,9 @@ use Yii;
  * @property string $branch_status
  */
 class Branches extends \yii\db\ActiveRecord{
+
+	const CREATE_BRANCH = 'create-branch';
+
 	/**
 	 * @inheritdoc
 	 */

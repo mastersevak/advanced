@@ -15,6 +15,9 @@ use Yii;
  * @property string $company_status
  */
 class Companies extends \yii\db\ActiveRecord{
+
+	const CREATE_COMPANY = 'create-company';
+
 	/**
 	 * @inheritdoc
 	 */

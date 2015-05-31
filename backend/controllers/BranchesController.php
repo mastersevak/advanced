@@ -60,7 +60,7 @@ class BranchesController extends Controller {
 
 
 		// access to create branche
-		if( Yii::$app->user->can( 'create-branch' ) ) :
+		if( Yii::$app->user->can(Branches::CREATE_BRANCH) ) :
 
 			$model = new Branches();
 
@@ -76,6 +76,26 @@ class BranchesController extends Controller {
 		else :
 			throw new ForbiddenHttpException;
 		endif;
+	}
+
+	public function actionLists($id){
+
+		$countBranches = Branches::finde()
+			->where(['companies_company_id' => $id])
+			->count();
+
+		$branches = Branches::finde()
+			->where(['companies_company_id' => $id])
+			->all();
+
+		if($countBranches > 0){
+			foreach ($branches as $branch){
+				echo "<option value='".$branches->branch_id."'>" . $branch->branch_name . "</option>>";
+			}
+		}
+		else{
+			echo "<option>-</option>";
+		}
 	}
 
 	/**

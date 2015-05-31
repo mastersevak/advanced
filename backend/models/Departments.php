@@ -15,6 +15,9 @@ use Yii;
  * @property string $department_status
  */
 class Departments extends \yii\db\ActiveRecord{
+
+	const CREATE_DEPARTMENT = 'create-department';
+
 	/**
 	 * @inheritdoc
 	 */

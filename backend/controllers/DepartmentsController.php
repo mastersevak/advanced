@@ -12,10 +12,10 @@ use yii\filters\VerbFilter;
 /**
  * DepartmentsController implements the CRUD actions for Departments model.
  */
-class DepartmentsController extends Controller
-{
-	public function behaviors()
-	{
+class DepartmentsController extends Controller {
+
+	public function behaviors(){
+
 		return [
 			'verbs' => [
 				'class' => VerbFilter::className(),
@@ -30,8 +30,8 @@ class DepartmentsController extends Controller
 	 * Lists all Departments models.
 	 * @return mixed
 	 */
-	public function actionIndex()
-	{
+	public function actionIndex(){
+
 		$searchModel = new DepartmentsSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -46,8 +46,8 @@ class DepartmentsController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionView($id)
-	{
+	public function actionView($id){
+
 		return $this->render('view', [
 			'model' => $this->findModel($id),
 		]);
@@ -58,20 +58,24 @@ class DepartmentsController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
-	public function actionCreate()
-	{
-		$model = new Departments();
+	public function actionCreate() {
 
-		if ($model->load(Yii::$app->request->post())) {
+		if( Yii::$app->user->can(Departments::CREATE_DEPARTMENT)) :
+			$model = new Departments();
 
-			$model->department_created_date = date('Y-m-d h:m:s');
-			$model->save();
-			return $this->redirect(['view', 'id' => $model->department_id]);
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
-		}
+			if ($model->load(Yii::$app->request->post())) {
+
+				$model->department_created_date = date('Y-m-d h:m:s');
+				$model->save();
+				return $this->redirect(['view', 'id' => $model->department_id]);
+			} else {
+				return $this->render('create', [
+					'model' => $model,
+				]);
+			}
+		else :
+			throw new ForbiddenHttpException;
+		endif;
 	}
 
 	/**

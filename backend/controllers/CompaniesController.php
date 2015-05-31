@@ -62,7 +62,7 @@ class CompaniesController extends Controller{
 	public function actionCreate(){
 
 		// access to create company
-		if( Yii::$app->user->can( 'create-company' ) ) :
+		if( Yii::$app->user->can(Companies::CREATE_COMPANY) ) :
 
 			$model = new Companies();
 
