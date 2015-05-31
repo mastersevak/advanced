@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Departments */
 
 $this->title = Yii::t('app', 'Update {modelClass}: ', [
-    'modelClass' => 'Departments',
+	'modelClass' => 'Departments',
 ]) . ' ' . $model->department_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Departments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->department_id, 'url' => ['view', 'id' => $model->department_id]];
@@ -14,10 +14,10 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="departments-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+	<?= $this->render('_form', [
+		'model' => $model,
+	]) ?>
 
 </div>
