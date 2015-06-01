@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Departments;
+use backend\models\Emails;
 
 /**
- * DepartmentsSearch represents the model behind the search form about `backend\models\Departments`.
+ * EmailsSearch represents the model behind the search form about `backend\models\Emails`.
  */
-class DepartmentsSearch extends Departments
+class EmailsSearch extends Emails
 {
 	/**
 	 * @inheritdoc
@@ -18,8 +18,8 @@ class DepartmentsSearch extends Departments
 	public function rules()
 	{
 		return [
-			[['department_id', 'branches_branch_id', 'companies_company_id'], 'integer'],
-			[['department_name', 'department_created_date', 'department_status'], 'safe'],
+			[['id'], 'integer'],
+			[['recever_name', 'recever_email', 'subject', 'content', 'attachment'], 'safe'],
 		];
 	}
 
@@ -41,7 +41,7 @@ class DepartmentsSearch extends Departments
 	 */
 	public function search($params)
 	{
-		$query = Departments::find();
+		$query = Emails::find();
 
 		$dataProvider = new ActiveDataProvider([
 			'query' => $query,
@@ -56,14 +56,14 @@ class DepartmentsSearch extends Departments
 		}
 
 		$query->andFilterWhere([
-			'department_id' => $this->department_id,
-			'branches_branch_id' => $this->branches_branch_id,
-			'companies_company_id' => $this->companies_company_id,
-			'department_created_date' => $this->department_created_date,
+			'id' => $this->id,
 		]);
 
-		$query->andFilterWhere(['like', 'department_name', $this->department_name])
-			->andFilterWhere(['like', 'department_status', $this->department_status]);
+		$query->andFilterWhere(['like', 'recever_name', $this->recever_name])
+			->andFilterWhere(['like', 'recever_email', $this->recever_email])
+			->andFilterWhere(['like', 'subject', $this->subject])
+			->andFilterWhere(['like', 'content', $this->content])
+			->andFilterWhere(['like', 'attachment', $this->attachment]);
 
 		return $dataProvider;
 	}

@@ -49,6 +49,14 @@ return [
 						'app'=>'settings.php'
 					)
 				),
+				'email'=>array(
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => "@app/messages",
+					'sourceLanguage' => 'en',
+					'fileMap' => array(
+						'app'=>'email.php'
+					)
+				),
 				'yii'=>array(
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
