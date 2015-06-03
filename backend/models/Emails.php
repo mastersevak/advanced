@@ -14,21 +14,18 @@ use Yii;
  * @property string $content
  * @property string $attachment
  */
-class Emails extends \yii\db\ActiveRecord
-{
+class Emails extends \yii\db\ActiveRecord{
 	/**
 	 * @inheritdoc
 	 */
-	public static function tableName()
-	{
+	public static function tableName(){
 		return 'emails';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
+	public function rules(){
 		return [
 			[['id', 'recever_name', 'recever_email', 'subject', 'content', 'attachment'], 'required'],
 			[['id'], 'integer'],
@@ -42,15 +39,14 @@ class Emails extends \yii\db\ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
-	{
+	public function attributeLabels(){
 		return [
-			'id' => Yii::t('email', 'ID'),
-			'recever_name' => Yii::t('email', 'Recever Name'),
-			'recever_email' => Yii::t('email', 'Recever Email'),
-			'subject' => Yii::t('email', 'Subject'),
-			'content' => Yii::t('email', 'Content'),
-			'attachment' => Yii::t('email', 'Attachment'),
+			'id'			=> Yii::t('email', 'ID'),
+			'recever_name'	=> Yii::t('email', 'Recever Name'),
+			'recever_email'	=> Yii::t('email', 'Recever Email'),
+			'subject'		=> Yii::t('email', 'Subject'),
+			'content'		=> Yii::t('email', 'Content'),
+			'attachment'	=> Yii::t('email', 'Attachment'),
 		];
 	}
 }

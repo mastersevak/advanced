@@ -8,14 +8,15 @@ use backend\models\EmailsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * EmailsController implements the CRUD actions for Emails model.
  */
-class EmailsController extends Controller
-{
-	public function behaviors()
-	{
+class EmailsController extends Controller {
+
+	public function behaviors() {
+
 		return [
 			'verbs' => [
 				'class' => VerbFilter::className(),
@@ -30,14 +31,14 @@ class EmailsController extends Controller
 	 * Lists all Emails models.
 	 * @return mixed
 	 */
-	public function actionIndex()
-	{
+	public function actionIndex() {
+
 		$searchModel = new EmailsSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		return $this->render('index', [
-			'searchModel' => $searchModel,
-			'dataProvider' => $dataProvider,
+			'searchModel'	=> $searchModel,
+			'dataProvider'	=> $dataProvider,
 		]);
 	}
 
@@ -46,8 +47,8 @@ class EmailsController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionView($id)
-	{
+	public function actionView($id) {
+
 		return $this->render('view', [
 			'model' => $this->findModel($id),
 		]);
@@ -58,16 +59,43 @@ class EmailsController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
-	public function actionCreate()
-	{
+	public function actionCreate() {
+
 		$model = new Emails();
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post())) {
+			// Upload the attachment
+			$model->attachment = UploadedFile::getInstance($model, 'attachment');
+
+			if($model->attachment){
+				$time = time();
+				$model->attachment->saveAs('attachments/'.$time.'.'.$model->attachment->extension);
+				$model->attachment = 'attachments/'.$time.'.'.$model->attachment->extension;
+			}
+			if($model->attachment){
+				$value = Yii::$app->mailer->compose()
+				->setFrom(['095555647s@gmail.com' => 'DoingItEasyChanel'])
+				->setTo($model->recever_email)
+				->setSubject($model->subject)
+				->setHtmlBody($model->content)
+				->attach($model->attachment)
+				->send();
+			}
+			else{
+				$value = Yii::$app->mailer->compose()
+				->setFrom(['095555647s@gmail.com' => 'DoingItEasyChanel'])
+				->setTo($model->recever_email)
+				->setSubject($model->subject)
+				->setHtmlBody($model->content)
+				->send();
+			}
+
+			$model->save();
+
 			return $this->redirect(['view', 'id' => $model->id]);
-		} else {
-			return $this->render('create', [
-				'model' => $model,
-			]);
+		}
+		else {
+			return $this->render('create', ['model' => $model]);
 		}
 	}
 
@@ -77,17 +105,14 @@ class EmailsController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionUpdate($id)
-	{
+	public function actionUpdate($id) {
+
 		$model = $this->findModel($id);
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post()) && $model->save())
 			return $this->redirect(['view', 'id' => $model->id]);
-		} else {
-			return $this->render('update', [
-				'model' => $model,
-			]);
-		}
+		else
+			return $this->render('update', ['model' => $model]);
 	}
 
 	/**
@@ -96,8 +121,8 @@ class EmailsController extends Controller
 	 * @param integer $id
 	 * @return mixed
 	 */
-	public function actionDelete($id)
-	{
+	public function actionDelete($id) {
+
 		$this->findModel($id)->delete();
 
 		return $this->redirect(['index']);
@@ -110,12 +135,11 @@ class EmailsController extends Controller
 	 * @return Emails the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
-	protected function findModel($id)
-	{
-		if (($model = Emails::findOne($id)) !== null) {
+	protected function findModel($id) {
+
+		if (($model = Emails::findOne($id)) !== null)
 			return $model;
-		} else {
-			throw new NotFoundHttpException('The requested page does not exist.');
-		}
+
+		else throw new NotFoundHttpException('The requested page does not exist.');
 	}
 }
