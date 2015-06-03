@@ -71,7 +71,7 @@ class BranchesController extends Controller {
 				return $this->redirect(['view', 'id' => $model->branch_id]);
 			}
 
-			else return $this->render('create', ['model' => $model]);
+			else return $this->renderAjax('create', ['model' => $model]);
 
 		else :
 			throw new ForbiddenHttpException;

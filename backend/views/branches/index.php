@@ -5,6 +5,8 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use backend\models\Branches;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BranchesSearch */
@@ -19,8 +21,25 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 	<p>
-		<?= Html::a(Yii::t('app', 'Create Branches'), ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::button(Yii::t('app', 'Create Branches'), [
+			'value' => Url::to('index.php?r=branches%2create'),
+			'class' => 'btn btn-success',
+			'id'	=> 'modalButton'
+		]) ?>
 	</p>
+
+	<?
+	Modal::begin([
+		'header'	=> '<h4>Modal Branches</h4>',
+		'id'		=> 'modal',
+		'size'		=> 'modal-lg'
+	]);
+
+	echo '<div class"modalContent"></div>';
+
+	Modal::end();
+	?>
+
 	<? Pjax::begin(); // for GridView ajax search in index page ?>
 		<?= GridView::widget([
 			'dataProvider' => $dataProvider,
