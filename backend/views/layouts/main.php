@@ -33,10 +33,12 @@ AppAsset::register($this);
 			]);
 			$menuItems = [
 				['label' => 'Gii',			'url' => ['/gii']],
-				['label' => 'Home',         'url' => ['/site/index']],
-				['label' => 'Company',      'url' => ['/companies/index']],
-				['label' => 'Brances',      'url' => ['/branches/index']],
-				['label' => 'Departments',  'url' => ['/departments/index']],
+				['label' => 'Home',			'url' => ['/site/index']],
+				['label' => 'Company',		'url' => ['/companies/index']],
+				['label' => 'Brances',		'url' => ['/branches/index']],
+				['label' => 'Departments',	'url' => ['/departments/index']],
+				['label' => 'Customers',	'url' => ['/customers/index']],
+				['label' => 'Locations',	'url' => ['/locations/index']],
 			];
 			if (Yii::$app->user->isGuest) {
 				$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

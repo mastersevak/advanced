@@ -1,0 +1,45 @@
+<?php
+
+namespace backend\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "locations".
+ *
+ * @property integer $location_id
+ * @property string $zip_code
+ * @property string $city
+ * @property string $province
+ */
+class Locations extends \yii\db\ActiveRecord{
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName(){
+		return 'locations';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules(){
+		return [
+			[['zip_code', 'city', 'province'], 'required'],
+			[['zip_code'], 'string', 'max' => 20],
+			[['city', 'province'], 'string', 'max' => 100]
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels(){
+		return [
+			'location_id'	=> Yii::t('locations', 'Location ID'),
+			'zip_code'		=> Yii::t('locations', 'Zip Code'),
+			'city'			=> Yii::t('locations', 'City'),
+			'province'		=> Yii::t('locations', 'Province'),
+		];
+	}
+}

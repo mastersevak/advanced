@@ -58,7 +58,6 @@ class BranchesController extends Controller {
 	 */
 	public function actionCreate() {
 
-
 		// access to create branche
 		if( Yii::$app->user->can(Branches::CREATE_BRANCH) ) :
 
@@ -110,7 +109,8 @@ class BranchesController extends Controller {
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->branch_id]);
-		} else {
+		}
+		else {
 			return $this->render('update', [
 				'model' => $model,
 			]);
@@ -139,10 +139,8 @@ class BranchesController extends Controller {
 	 */
 	protected function findModel($id) {
 
-		if (($model = Branches::findOne($id)) !== null) {
+		if (($model = Branches::findOne($id)) !== null)
 			return $model;
-		} else {
-			throw new NotFoundHttpException('The requested page does not exist.');
-		}
+		else throw new NotFoundHttpException('The requested page does not exist.');
 	}
 }

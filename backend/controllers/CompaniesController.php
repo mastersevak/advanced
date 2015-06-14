@@ -17,6 +17,7 @@ use yii\web\ForbiddenHttpException;
 class CompaniesController extends Controller{
 
 	public function behaviors(){
+
 		return [
 			'verbs' => [
 				'class' => VerbFilter::className(),
@@ -99,7 +100,8 @@ class CompaniesController extends Controller{
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->company_id]);
-		} else {
+		}
+		else {
 			return $this->render('update', [
 				'model' => $model,
 			]);
@@ -130,7 +132,8 @@ class CompaniesController extends Controller{
 
 		if (($model = Companies::findOne($id)) !== null) {
 			return $model;
-		} else {
+		}
+		else {
 			throw new NotFoundHttpException('The requested page does not exist.');
 		}
 	}

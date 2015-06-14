@@ -61,6 +61,22 @@ return [
 						'app'=>'email.php'
 					)
 				),
+				'customers'=>[
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => "@app/messages",
+					'sourceLanguage' => 'en',
+					'fileMap' => [
+						'app'=>'customers.php'
+					]
+				],
+				'locations'=>[
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => "@app/messages",
+					'sourceLanguage' => 'en',
+					'fileMap' => [
+						'app'=>'locations.php'
+					]
+				],
 				'yii'=>array(
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
