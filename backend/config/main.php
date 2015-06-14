@@ -45,6 +45,14 @@ return [
 		],
 		'i18n'=>array(
 			'translations' => array(
+				'backend'=>[
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => "@app/messages",
+					'sourceLanguage' => 'en',
+					'fileMap' => [
+						'app'=>'backend.php'
+					]
+				],
 				'settings'=>array(
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
