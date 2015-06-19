@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Companies;
+use backend\models\Branches;
 use backend\models\CompaniesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,24 +66,37 @@ class CompaniesController extends Controller{
 		// access to create company
 		if( Yii::$app->user->can(Companies::CREATE_COMPANY) ) :
 
-			$model = new Companies();
+			$model  = new Companies();
+			$branch = new Branches();
 
-			if ($model->load( Yii::$app->request->post() )){
+			if ($model->load(Yii::$app->request->post()) && $branch->load(Yii::$app->request->post()) ){
 
 				$imgName = $model->company_naem;
-				// get the instance of the uploaded file
-				$model->file = UploadedFile::getInstance($model, 'file'); // get 2 parameters
-				$model->file->saveAs('uploades/' . $imgName.'.'.$model->file->extension); // defoult path advanced/backend/web
 
-				// save the file path in the DB column
-				$model->logo = 'uploades/'.$imgName.'.'.$model->file->extension;
+				if(!empty($model->file)){
+					// get the instance of the uploaded file
+					$model->file = UploadedFile::getInstance($model, 'file'); // get 2 parameters
+					$model->file->saveAs('uploades/' . $imgName.'.'.$model->file->extension); // defoult path advanced/backend/web
+
+					// save the file path in the DB column
+					$model->logo = 'uploades/'.$imgName.'.'.$model->file->extension;
+				}
 
 				$model->company_creates_date = date('Y-m-d h:m:s');
 				$model->save();
+
+				$branch->companies_company_id = $model->company_id;
+				$branch->branch_created_date = date('Y-m-d H:h:s');
+				$branch->save();
+
 				return $this->redirect(['view', 'id' => $model->company_id]);
 			}
 
-			else return $this->render('create', ['model' => $model ]);
+			else
+				return $this->render('create', [
+					'model'	=> $model,
+					'branch'=> $branch,
+				]);
 		else :
 			throw new ForbiddenHttpException;
 		endif;
@@ -98,14 +112,12 @@ class CompaniesController extends Controller{
 
 		$model = $this->findModel($id);
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post()) && $model->save())
 			return $this->redirect(['view', 'id' => $model->company_id]);
-		}
-		else {
+		else
 			return $this->render('update', [
 				'model' => $model,
 			]);
-		}
 	}
 
 	/**
@@ -117,7 +129,6 @@ class CompaniesController extends Controller{
 	public function actionDelete($id) {
 
 		$this->findModel($id)->delete();
-
 		return $this->redirect(['index']);
 	}
 
@@ -130,11 +141,9 @@ class CompaniesController extends Controller{
 	 */
 	protected function findModel($id){
 
-		if (($model = Companies::findOne($id)) !== null) {
+		if (($model = Companies::findOne($id)) !== null)
 			return $model;
-		}
-		else {
+		else
 			throw new NotFoundHttpException('The requested page does not exist.');
-		}
 	}
 }
