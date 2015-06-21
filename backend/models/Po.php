@@ -47,10 +47,6 @@ class Po extends \yii\db\ActiveRecord{
 	 * @return \yii\db\ActiveQuery
 	 */
 	public function getPoItem(){
-// Globals::dump( $this->hasOne(PoItem::className(), ['id' => 'id'] ) , true);
-
 		return $this->hasMany(PoItem::className(), ['po_id' => 'id']);
-
-		// return $this->hasOne(PoItem::className(), ['id' => 'id']);
 	}
 }

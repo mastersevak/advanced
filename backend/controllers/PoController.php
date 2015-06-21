@@ -7,23 +7,27 @@ use backend\models\Po;
 use backend\models\PoSearch;
 use backend\models\PoItem;
 use backend\models\Model;
-use yii\web\Controller;
+use backend\controllers\BackController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;
 use yii\helpers\ArrayHelper;
 
-
-use common\helpers\Globals;
+// use yii\helpers\VarDumper;
 // use common\helpers\Globals;
-// use common\helpers\dump;
-
-require(__DIR__ . '/../../common/helpers/Globals.php');
+// Globals::dump();
 
 /**
  * PoController implements the CRUD actions for Po model.
+ *	more informations
+ *	https://github.com/wbraganca/yii2-dynamicform
  */
-class PoController extends Controller{
+// require(__DIR__ . '/../../common/helpers/Globals.php');
+// use common\helpers\dump;
+// dump($searchModel, true);
+
+class PoController extends BackController{
+
 	public function behaviors(){
 		return [
 			'verbs' => [
@@ -185,11 +189,12 @@ class PoController extends Controller{
 	 * @return Po the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
-	protected function findModel($id)
-	{
+	protected function findModel($id){
+
 		if (($model = Po::findOne($id)) !== null) {
 			return $model;
-		} else {
+		}
+		else {
 			throw new NotFoundHttpException('The requested page does not exist.');
 		}
 	}

@@ -50,7 +50,6 @@ class PoItem extends \yii\db\ActiveRecord{
 	 * @return \yii\db\ActiveQuery
 	 */
 	public function getId0(){
-		// return $this->hasMany(Po::className(), ['id' => 'po_id']);
 		return $this->hasOne(Po::className(), ['id' => 'id']);
 	}
 }

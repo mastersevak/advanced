@@ -15,17 +15,17 @@ use yii\helpers;
 * Ниже приведен код, содержащий список наиболее используемых функций быстрого доступа.
 */
 
-class Globals {
-	public static function dump($var, $exit = false, $highlight=true, $depth=10) {
-		VarDumper::dump($var, $depth, $highlight);
-		if($exit) Yii::$app->end();
-	}
-}
-
-// function dump($var, $exit = false, $highlight=true, $depth=10) {
-// 	VarDumper::dump($var, $depth, $highlight);
-// 	if($exit) Yii::$app->end();
+// class Globals {
+// 	public static function dump($var, $exit = false, $highlight=true, $depth=10) {
+// 		VarDumper::dump($var, $depth, $highlight);
+// 		if($exit) Yii::$app->end();
+// 	}
 // }
+
+function dump($var, $exit = false, $highlight=true, $depth=10) {
+	VarDumper::dump($var, $depth, $highlight);
+	if($exit) Yii::$app->end();
+}
 
 defined('DS') or define('DS', DIRECTORY_SEPARATOR);
 defined('BR') or define('BR', '<br>');
@@ -231,33 +231,33 @@ if(!function_exists('array_column')){
  */
 function ip() {
 	if (isset($_SERVER)) {
-	if(isset($_SERVER['HTTP_CLIENT_IP'])){
-	$ip = $_SERVER['HTTP_CLIENT_IP'];
-	}
-	elseif(isset($_SERVER['HTTP_FORWARDED_FOR'])){
-	$ip = $_SERVER['HTTP_FORWARDED_FOR'];
-	}
-	elseif(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
-	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-	}
-	else{
-	$ip = $_SERVER['REMOTE_ADDR'];
-	}
+		if(isset($_SERVER['HTTP_CLIENT_IP'])){
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+		}
+		elseif(isset($_SERVER['HTTP_FORWARDED_FOR'])){
+			$ip = $_SERVER['HTTP_FORWARDED_FOR'];
+		}
+		elseif(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}
+		else{
+			$ip = $_SERVER['REMOTE_ADDR'];
+		}
 	}
 	else
-	{
-	if (getenv( 'HTTP_CLIENT_IP')) {
-	$ip = getenv( 'HTTP_CLIENT_IP' );
-	}
-	elseif (getenv('HTTP_FORWARDED_FOR')) {
-	$ip = getenv('HTTP_FORWARDED_FOR');
-	}
-	elseif (getenv('HTTP_X_FORWARDED_FOR')) {
-	$ip = getenv('HTTP_X_FORWARDED_FOR');
-	}
-	else {
-	$ip = getenv('REMOTE_ADDR');
-	}
+		{
+		if (getenv( 'HTTP_CLIENT_IP')) {
+			$ip = getenv( 'HTTP_CLIENT_IP' );
+		}
+		elseif (getenv('HTTP_FORWARDED_FOR')) {
+			$ip = getenv('HTTP_FORWARDED_FOR');
+		}
+		elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+			$ip = getenv('HTTP_X_FORWARDED_FOR');
+		}
+		else {
+			$ip = getenv('REMOTE_ADDR');
+		}
 	}
 	return $ip;
 }
