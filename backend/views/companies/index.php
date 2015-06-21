@@ -22,13 +22,23 @@ $this->params['breadcrumbs'][] = $this->title;
 	</p>
 
 	<?= GridView::widget([
-		'dataProvider' => $dataProvider,
-		'filterModel' => $searchModel,
-		'columns' => [
+		'dataProvider'	=> $dataProvider,
+		'filterModel'	=> $searchModel,
+		// 'layout' => "{items}",
+		'rowOptions'	=> function ($model){
+			if($model->company_status == 'active')
+				return ['class' => 'bg-green'];
+			else return ['class' => 'bg-red'];
+		},
+		'columns'		=> [
 			['class' => 'yii\grid\SerialColumn'],
-
-			// 'company_id',
-			'company_naem',
+			[
+				'attribute'	=> 'company_naem',
+				'format' => 'raw',
+				'value'		=> function ($data){
+					return Html::a('<i class="fa fa-arrows"></i>  ' . $data->company_naem, '#');
+				}
+			],
 			'company_email:email',
 			'company_addres',
 			'company_creates_date',
@@ -37,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				'filter'    =>  ['active'=>'active', 'inactive'=>'inactive'],//ArrayHelper::map(Companies::find()->all(), 'company_status', 'company_status'),
 			],
 
-			['class' => 'yii\grid\ActionColumn'],
+			['class' => 'yii\grid\ActionColumn'],// view, edit, delete icons
 		],
 	]); ?>
 

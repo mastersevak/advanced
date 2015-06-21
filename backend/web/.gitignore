@@ -4,3 +4,8 @@
 # file send maile
 /attachments
 
+# sass chache
+/.sass-cache
+
+# upload img folder
+/uploades
