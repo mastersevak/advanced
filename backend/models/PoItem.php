@@ -14,22 +14,20 @@ use Yii;
  *
  * @property Po $id0
  */
-class PoItem extends \yii\db\ActiveRecord
-{
+class PoItem extends \yii\db\ActiveRecord{
 	/**
 	 * @inheritdoc
 	 */
-	public static function tableName()
-	{
+	public static function tableName(){
 		return 'po_item';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
+	public function rules(){
 		return [
+			[['po_item_no', 'quantity'], 'required'],
 			[['po_id'], 'integer'],
 			[['quantity'], 'number'],
 			[['po_item_no'], 'string', 'max' => 10]
@@ -39,8 +37,7 @@ class PoItem extends \yii\db\ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
-	{
+	public function attributeLabels(){
 		return [
 			'id' => Yii::t('backend', 'ID'),
 			'po_id' => Yii::t('backend', 'Po ID'),
@@ -52,8 +49,8 @@ class PoItem extends \yii\db\ActiveRecord
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getId0()
-	{
+	public function getId0(){
+		// return $this->hasMany(Po::className(), ['id' => 'po_id']);
 		return $this->hasOne(Po::className(), ['id' => 'id']);
 	}
 }

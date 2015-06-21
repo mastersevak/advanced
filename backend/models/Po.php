@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use common\helpers\Globals;
 
 /**
  * This is the model class for table "po".
@@ -13,21 +14,18 @@ use Yii;
  *
  * @property PoItem $poItem
  */
-class Po extends \yii\db\ActiveRecord
-{
+class Po extends \yii\db\ActiveRecord{
 	/**
 	 * @inheritdoc
 	 */
-	public static function tableName()
-	{
+	public static function tableName(){
 		return 'po';
 	}
 
 	/**
 	 * @inheritdoc
 	 */
-	public function rules()
-	{
+	public function rules(){
 		return [
 			[['description'], 'string'],
 			[['po_no'], 'string', 'max' => 10]
@@ -37,8 +35,7 @@ class Po extends \yii\db\ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
-	{
+	public function attributeLabels(){
 		return [
 			'id' => Yii::t('backend', 'ID'),
 			'po_no' => Yii::t('backend', 'Po No'),
@@ -49,8 +46,11 @@ class Po extends \yii\db\ActiveRecord
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getPoItem()
-	{
-		return $this->hasOne(PoItem::className(), ['id' => 'id']);
+	public function getPoItem(){
+// Globals::dump( $this->hasOne(PoItem::className(), ['id' => 'id'] ) , true);
+
+		return $this->hasMany(PoItem::className(), ['po_id' => 'id']);
+
+		// return $this->hasOne(PoItem::className(), ['id' => 'id']);
 	}
 }

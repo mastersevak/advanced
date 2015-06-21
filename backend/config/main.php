@@ -43,8 +43,8 @@ return [
 		'errorHandler' => [
 			'errorAction' => 'site/error',
 		],
-		'i18n'=>array(
-			'translations' => array(
+		'i18n' => [
+			'translations' => [
 				'backend'=>[
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
@@ -93,8 +93,8 @@ return [
 						'yii'=>'yii.php'
 					)
 				)
-			)
-		),
+			]
+		],
 	],
 	'params' => $params,
 ];

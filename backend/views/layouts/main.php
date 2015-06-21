@@ -35,6 +35,7 @@ AppAsset::register($this);
 				['label' => 'Gii',			'url' => ['/gii']],
 				['label' => 'Home',			'url' => ['/site/index']],
 				['label' => 'Company',		'url' => ['/companies/index']],
+				['label' => 'PO',			'url' => ['/po/index']],
 				['label' => 'Brances',		'url' => ['/branches/index']],
 				['label' => 'Departments',	'url' => ['/departments/index']],
 				['label' => 'Customers',	'url' => ['/customers/index']],
