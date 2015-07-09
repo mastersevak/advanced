@@ -22,7 +22,9 @@
         "2amigos/yii2-bootstrap-form-helpers-library": "*",
         "2amigos/yii2-date-picker-widget": "*",
         "kartik-v/yii2-widget-select2": "*",
-        "wbraganca/yii2-dynamicform": "*"
+        "wbraganca/yii2-dynamicform": "*",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-krajee-base": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
