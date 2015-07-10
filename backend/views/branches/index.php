@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<p>
 		<?= Html::button(Yii::t('app', 'Create Branches'), [
-			'value' => Url::to('index.php?r=branches%2create'),
+			'value' => Url::to('index.php?r=branches/create'),
 			'class' => 'btn btn-success',
 			'id'	=> 'modalButton'
 		]) ?>
@@ -35,12 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
 		'size'		=> 'modal-lg'
 	]);
 
-	echo '<div class"modalContent"></div>';
+	echo '<div id="modalContent"></div>';
 
 	Modal::end();
 	?>
 
-	<? Pjax::begin(); // for GridView ajax search in index page ?>
+	<? Pjax::begin(['id'=>'branchesGrid']); // for GridView ajax search in index page ?>
 		<?= GridView::widget([
 			'dataProvider' => $dataProvider,
 			'filterModel' => $searchModel,
