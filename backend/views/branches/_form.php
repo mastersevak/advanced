@@ -14,7 +14,6 @@ use kartik\select2\Select2;
 <div class="branches-form">
 
 	<?php $form = ActiveForm::begin(['id'=>$model->formName()]); ?>
-
 	<?
 	// = $form->field($model, 'companies_company_id')->dropDownList(
 	// 		ArrayHelper::map(Companies::find()->all(), 'company_id', 'company_naem'),
