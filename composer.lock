@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "68f5bce96dc29e242583e96dbebe5b1b",
+    "hash": "919433a2b8572d4a4dfdbfa37b77b107",
     "packages": [
         {
             "name": "2amigos/yii2-bootstrap-form-helpers-library",
@@ -837,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "881daa3ae04317695737f0aeb24211fd4fe1d224"
+                "reference": "8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/881daa3ae04317695737f0aeb24211fd4fe1d224",
-                "reference": "881daa3ae04317695737f0aeb24211fd4fe1d224",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a",
+                "reference": "8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +917,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-07-09 20:54:53"
+            "time": "2015-07-10 04:32:34"
         },
         {
             "name": "yiisoft/yii2-bootstrap",

@@ -10,60 +10,57 @@ use backend\models\PoItem;
 /**
  * PoItemSearch represents the model behind the search form about `backend\models\PoItem`.
  */
-class PoItemSearch extends PoItem
-{
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['id', 'po_id'], 'integer'],
-            [['po_item_no'], 'safe'],
-            [['quantity'], 'number'],
-        ];
-    }
+class PoItemSearch extends PoItem {
+	/**
+	 * @inheritdoc
+	 */
+	public function rules(){
+		return [
+			[['id', 'po_id'], 'integer'],
+			[['po_item_no'], 'safe'],
+			[['quantity'], 'number'],
+		];
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function scenarios(){
+		// bypass scenarios() implementation in the parent class
+		return Model::scenarios();
+	}
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function search($params)
-    {
-        $query = PoItem::find();
+	/**
+	 * Creates data provider instance with search query applied
+	 *
+	 * @param array $params
+	 *
+	 * @return ActiveDataProvider
+	 */
+	public function search($params){
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+		$query = PoItem::find();
 
-        $this->load($params);
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+		// $this->load($params);
 
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'po_id' => $this->po_id,
-            'quantity' => $this->quantity,
-        ]);
+		// if(!$this->validate() ){
+		// 	// uncomment the following line if you do not want to return any records when validation fails
+		// 	// $query->where('0=1');
+		// 	return $dataProvider;
+		// }
 
-        $query->andFilterWhere(['like', 'po_item_no', $this->po_item_no]);
+		$query->andFilterWhere([
+			'id'		=> $this->id,
+			'po_id'		=> $this->po_id,
+			'quantity'	=> $this->quantity,
+		]);
 
-        return $dataProvider;
-    }
+		$query->andFilterWhere(['like', 'po_item_no', $this->po_item_no]);
+
+		return $dataProvider;
+	}
 }
