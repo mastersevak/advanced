@@ -8,6 +8,7 @@ use backend\models\EventSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+// http://fullcalendar.io/docs/event_data/Event_Object/
 
 /**
  * EventController implements the CRUD actions for Event model.
@@ -40,6 +41,7 @@ class EventController extends Controller {
 			$event->id 	  	= $mdl->id;
 			$event->title 	= $mdl->title;
 			$event->start 	= $mdl->created;
+			$event->className = 'danger';
 			$tasks[]		= $event;
 		}
 
@@ -62,13 +64,16 @@ class EventController extends Controller {
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
-	public function actionCreate(){
+	public function actionCreate($date){
 		$model = new Event();
+		$model->created = $date;
+
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->id]);
-		} else {
-			return $this->render('create', [
+			return $this->redirect(['index', 'id' => $model->id]);
+		}
+		else {
+			return $this->renderAjax('create', [
 				'model' => $model,
 			]);
 		}

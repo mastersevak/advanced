@@ -18,11 +18,9 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'created')->textInput() ?>
 
-	<?= $form->field($model, 'id_creator')->textInput() ?>
-
-	<?= $form->field($model, 'changed')->textInput() ?>
-
-	<?= $form->field($model, 'id_changer')->textInput() ?>
+	<? //= $form->field($model, 'id_creator')->textInput()	?>
+	<? //= $form->field($model, 'changed')->textInput()		?>
+	<? //= $form->field($model, 'id_changer')->textInput()	?>
 
 	<div class="form-group">
 		<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
