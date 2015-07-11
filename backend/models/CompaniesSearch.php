@@ -39,8 +39,8 @@ class CompaniesSearch extends Companies {
 	 *
 	 * @return ActiveDataProvider
 	 */
-	public function search($params)
-	{
+	public function search($params) {
+
 		$query = Companies::find();
 
 		$dataProvider = new ActiveDataProvider([
@@ -55,16 +55,25 @@ class CompaniesSearch extends Companies {
 			return $dataProvider;
 		}
 		// pakum enq globalSearch grelu hamar
-		// $query->andFilterWhere([
-		// 	'company_id' => $this->company_id,
-		// 	'company_creates_date' => $this->company_creates_date,
-		// ]);
 
-		$query	->orFilterWhere(['like', 'company_naem',			$this->globalSearch])
-				->orFilterWhere(['like', 'company_email',			$this->globalSearch])
-				->orFilterWhere(['like', 'company_addres',			$this->globalSearch])
-				->orFilterWhere(['like', 'company_status',			$this->globalSearch])
-				->orFilterWhere(['like', 'company_creates_date',	$this->globalSearch]);
+		if (!$this->globalSearch) {
+
+			$query->andFilterWhere([
+				'company_id' => $this->company_id,
+				'company_creates_date' => $this->company_creates_date,
+			]);
+
+			$query	->andFilterWhere(['like', 'company_naem',	$this->company_naem])
+		            ->andFilterWhere(['like', 'company_email',	$this->company_email])
+		            ->andFilterWhere(['like', 'company_addres',	$this->company_addres])
+		            ->andFilterWhere(['like', 'company_status',	$this->company_status]);
+		}
+		else
+			$query	->orFilterWhere(['like', 'company_naem',			$this->globalSearch])
+					->orFilterWhere(['like', 'company_email',			$this->globalSearch])
+					->orFilterWhere(['like', 'company_addres',			$this->globalSearch])
+					->orFilterWhere(['like', 'company_status',			$this->globalSearch])
+					->orFilterWhere(['like', 'company_creates_date',	$this->globalSearch]);
 
 		return $dataProvider;
 	}

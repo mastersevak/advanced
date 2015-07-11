@@ -10,60 +10,58 @@ use backend\models\Customers;
 /**
  * CustomersSearch represents the model behind the search form about `backend\models\Customers`.
  */
-class CustomersSearch extends Customers
-{
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['customer_id'], 'integer'],
-            [['customer_name', 'zip_code', 'city', 'province'], 'safe'],
-        ];
-    }
+class CustomersSearch extends Customers {
 
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules(){
+		return [
+			[['customer_id'], 'integer'],
+			[['customer_name', 'zip_code', 'city', 'province'], 'safe'],
+		];
+	}
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function search($params)
-    {
-        $query = Customers::find();
+	/**
+	 * @inheritdoc
+	 */
+	public function scenarios(){
+		// bypass scenarios() implementation in the parent class
+		return Model::scenarios();
+	}
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+	/**
+	 * Creates data provider instance with search query applied
+	 *
+	 * @param array $params
+	 *
+	 * @return ActiveDataProvider
+	 */
+	public function search($params) {
 
-        $this->load($params);
+		$query = Customers::find();
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
 
-        $query->andFilterWhere([
-            'customer_id' => $this->customer_id,
-        ]);
+		$this->load($params);
 
-        $query->andFilterWhere(['like', 'customer_name', $this->customer_name])
-            ->andFilterWhere(['like', 'zip_code', $this->zip_code])
-            ->andFilterWhere(['like', 'city', $this->city])
-            ->andFilterWhere(['like', 'province', $this->province]);
+		if (!$this->validate()) {
+			// uncomment the following line if you do not want to return any records when validation fails
+			// $query->where('0=1');
+			return $dataProvider;
+		}
 
-        return $dataProvider;
-    }
+		$query->andFilterWhere([
+			'customer_id' => $this->customer_id,
+		]);
+
+		$query->andFilterWhere(['like', 'customer_name', $this->customer_name])
+			->andFilterWhere(['like', 'zip_code', $this->zip_code])
+			->andFilterWhere(['like', 'city', $this->city])
+			->andFilterWhere(['like', 'province', $this->province]);
+
+		return $dataProvider;
+	}
 }

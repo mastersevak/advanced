@@ -17,18 +17,17 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'globalSearch') ?>
 
-	<? // =$form->field($model, 'company_id') ?>
-	<? // =$form->field($model, 'company_naem') ?>
-	<? // =$form->field($model, 'company_email') ?>
-	<? // =$form->field($model, 'company_addres') ?>
-	<? // =$form->field($model, 'company_creates_date') ?>
-	<? // =$form->field($model, 'company_status')->dropDownList(['active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => 'Status']) ?>
+	<?//= $form->field($model, 'company_id') ?>
+	<?//= $form->field($model, 'company_naem') ?>
+	<?//= $form->field($model, 'company_email') ?>
+	<?//= $form->field($model, 'company_addres') ?>
+	<?//= $form->field($model, 'company_creates_date') ?>
+	<?//= $form->field($model, 'company_status')->dropDownList(['active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => 'Status']) ?>
 
 	<div class="form-group">
-		<?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-		<?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+		<?= Html::submitButton(	Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+		<?= Html::resetButton(	Yii::t('app', 'Reset'),  ['class' => 'btn btn-default']) ?>
 	</div>
 
 	<?php ActiveForm::end(); ?>
-
 </div>
