@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "919433a2b8572d4a4dfdbfa37b77b107",
+    "hash": "f44e38f4b375d72ad8345da92a7c2421",
     "packages": [
         {
             "name": "2amigos/yii2-bootstrap-form-helpers-library",
@@ -192,6 +192,60 @@
             ]
         },
         {
+            "name": "bower-asset/fullcalendar",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arshaw/fullcalendar.git",
+                "reference": "b48f3f2dbb71be46002833a611dc3fa7bb982a56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arshaw/fullcalendar/zipball/b48f3f2dbb71be46002833a611dc3fa7bb982a56",
+                "reference": "b48f3f2dbb71be46002833a611dc3fa7bb982a56",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.1",
+                "bower-asset/moment": ">=2.5.0"
+            },
+            "require-dev": {
+                "bower-asset/bootstrap": "~3.2.0",
+                "bower-asset/jasmine-fixture": "~1.2.0",
+                "bower-asset/jasmine-jquery": "~2.0.3",
+                "bower-asset/jquery-mockjax": "~1.5.4",
+                "bower-asset/jquery-simulate-ext": "~1.3.0",
+                "bower-asset/jquery-ui": ">=1.11.1",
+                "bower-asset/moment-timezone": "~0.2.1"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "dist/fullcalendar.js",
+                    "dist/fullcalendar.css"
+                ],
+                "bower-asset-ignore": [
+                    "*",
+                    "**/.*",
+                    "!/dist/**",
+                    "!/changelog.*",
+                    "!/license.*",
+                    "!/readme.*"
+                ]
+            },
+            "license": {
+                "type": "MIT",
+                "url": "https://github.com/arshaw/fullcalendar/blob/master/license.txt"
+            },
+            "description": "Full-sized drag & drop event calendar",
+            "keywords": [
+                "calendar",
+                "event",
+                "full-sized",
+                "jquery-plugin"
+            ]
+        },
+        {
             "name": "bower-asset/jquery",
             "version": "2.1.4",
             "source": {
@@ -311,6 +365,44 @@
                 "mask",
                 "plugins"
             ]
+        },
+        {
+            "name": "bower-asset/moment",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment.git",
+                "reference": "25cc720fbaab7323a1016cd0beb6a36e349c41be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/25cc720fbaab7323a1016cd0beb6a36e349c41be",
+                "reference": "25cc720fbaab7323a1016cd0beb6a36e349c41be",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "moment.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "benchmarks",
+                    "bower_components",
+                    "meteor",
+                    "node_modules",
+                    "scripts",
+                    "tasks",
+                    "test",
+                    "component.json",
+                    "composer.json",
+                    "CONTRIBUTING.md",
+                    "ender.js",
+                    "Gruntfile.js",
+                    "Moment.js.nuspec",
+                    "package.js",
+                    "package.json"
+                ]
+            },
+            "time": "2015-05-13 07:42:12"
         },
         {
             "name": "bower-asset/punycode",
@@ -620,6 +712,55 @@
             "time": "2015-05-09 08:06:45"
         },
         {
+            "name": "philippfrenzel/yii2fullcalendar",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/philippfrenzel/yii2fullcalendar.git",
+                "reference": "6bee6a8961827244262ea4b51d44b85aa314d0a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/philippfrenzel/yii2fullcalendar/zipball/6bee6a8961827244262ea4b51d44b85aa314d0a4",
+                "reference": "6bee6a8961827244262ea4b51d44b85aa314d0a4",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/fullcalendar": "2.3.* | 2.2.* | 2.1.*",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-jui": "*"
+            },
+            "require-dev": {
+                "codeception/codeception": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yii2fullcalendar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philipp Frenzel",
+                    "email": "philipp@frenzel.net",
+                    "homepage": "http://www.frenzel.net/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 fullcalendar Widgets",
+            "homepage": "http://www.frenzel.net/",
+            "keywords": [
+                "fullcalendar",
+                "yii2"
+            ],
+            "time": "2015-06-16 09:15:47"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "5.x-dev",
             "source": {
@@ -837,12 +978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a"
+                "reference": "d282f2da867d1d902e88d73e3bfe10cba7f50e9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a",
-                "reference": "8eaa1f1c0edeb611fccef2ca71b8b6e340cdb44a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d282f2da867d1d902e88d73e3bfe10cba7f50e9c",
+                "reference": "d282f2da867d1d902e88d73e3bfe10cba7f50e9c",
                 "shasum": ""
             },
             "require": {
@@ -917,7 +1058,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-07-10 04:32:34"
+            "time": "2015-07-11 18:26:24"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
