@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m150530_215637_create_tables_auth_assignment_and_auth_item_child_and_auth_item_and_auth_rule extends Migration {
+class m150530_215637_CT_AUTH_ASSIGNMENT_and_AUTH_ITEM_CHILD_and_AUTH_ITEM_and_AUTH_RULE extends Migration {
 
 	public function up(){
 
