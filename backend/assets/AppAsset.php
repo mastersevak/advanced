@@ -21,6 +21,9 @@ class AppAsset extends AssetBundle {
 		'css/site.css',
 		'stylesheets/helpers.css',
 		'font-awesome-4.3.0/css/font-awesome.min.css',
+
+		// theme
+		'css/theme/bootstrap.main.css',
 	];
 
 	public $js = [

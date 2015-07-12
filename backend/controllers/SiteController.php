@@ -16,7 +16,6 @@ class SiteController extends Controller {
 	 * @inheritdoc
 	 */
 	public function behaviors() {
-
 		return [
 			'access' => [
 				'class' => AccessControl::className(),
@@ -53,6 +52,7 @@ class SiteController extends Controller {
 	}
 
 	public function actionIndex(){
+		$this->layout = "AdminLTE-layout";
 
 		// im sepakan component@ poxi convert dolar@ hashvum e dramov
 		Yii::$app->MyComponent->currencyConverter('USD', 'AMD', 100);
