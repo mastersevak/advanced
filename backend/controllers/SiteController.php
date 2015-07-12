@@ -53,6 +53,10 @@ class SiteController extends Controller {
 	}
 
 	public function actionIndex(){
+
+		// im sepakan component@
+		Yii::$app->MyComponent->hello();
+
 		return $this->render('index');
 	}
 

@@ -61,22 +61,18 @@ return [
 						'app'=>'backend.php'
 					]
 				],
-				'settings'=>array(
+				'settings'=>[
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
 					'sourceLanguage' => 'en',
-					'fileMap' => array(
-						'app'=>'settings.php'
-					)
-				),
-				'email'=>array(
+					'fileMap' => ['app'=>'settings.php']
+				],
+				'email'=>[
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
 					'sourceLanguage' => 'en',
-					'fileMap' => array(
-						'app'=>'email.php'
-					)
-				),
+					'fileMap' => ['app'=>'email.php']
+				],
 				'customers'=>[
 					'class' => 'yii\i18n\PhpMessageSource',
 					'basePath' => "@app/messages",
@@ -93,16 +89,17 @@ return [
 						'app'=>'locations.php'
 					]
 				],
-				'yii'=>array(
-					'class' => 'yii\i18n\PhpMessageSource',
-					'basePath' => "@app/messages",
+				'yii' => [
+					'class'	=> 'yii\i18n\PhpMessageSource',
+					'basePath'	=> "@app/messages",
 					'sourceLanguage' => 'en',
-					'fileMap' => array(
-						'yii'=>'yii.php'
-					)
-				)
+					'fileMap' => ['yii'=>'yii.php']
+				]
 			]
 		],
+		'MyComponent' => [
+			'class' => 'backend\components\MyComponent',
+		]
 	],
 	'params' => $params,
 ];
