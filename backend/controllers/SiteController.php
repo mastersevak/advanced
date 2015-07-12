@@ -54,8 +54,8 @@ class SiteController extends Controller {
 
 	public function actionIndex(){
 
-		// im sepakan component@
-		Yii::$app->MyComponent->hello();
+		// im sepakan component@ poxi convert dolar@ hashvum e dramov
+		Yii::$app->MyComponent->currencyConverter('USD', 'AMD', 100);
 
 		return $this->render('index');
 	}
