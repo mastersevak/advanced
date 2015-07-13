@@ -18,6 +18,7 @@ Thumbs.db
 # composer vendor dir
 /vendor/*
 !/vendor/kartik-v
+!/vendor/yiisoft
 
 # composer itself is not needed
 composer.phar

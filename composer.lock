@@ -147,7 +147,7 @@
                 "migration",
                 "yii2"
             ],
-            "time": "2014-05-27 00:00:00"
+            "time": "2015-02-07 12:57:54"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -1330,12 +1330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "42bef724d0a241853ae67d6f091ffa43914de237"
+                "reference": "587a38f912801eb778125d67ed5feae0d6717cb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/42bef724d0a241853ae67d6f091ffa43914de237",
-                "reference": "42bef724d0a241853ae67d6f091ffa43914de237",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/587a38f912801eb778125d67ed5feae0d6717cb8",
+                "reference": "587a38f912801eb778125d67ed5feae0d6717cb8",
                 "shasum": ""
             },
             "require": {
@@ -1374,7 +1374,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-07-12 21:01:08"
+            "time": "2015-07-13 13:55:48"
         },
         {
             "name": "phpspec/php-diff",
