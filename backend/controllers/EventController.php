@@ -5,7 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Event;
 use backend\models\EventSearch;
-use yii\web\Controller;
+use backend\controllers\BackController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 // http://fullcalendar.io/docs/event_data/Event_Object/
@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * EventController implements the CRUD actions for Event model.
  */
-class EventController extends Controller {
+class EventController extends BackController {
 
 	public function behaviors(){
 		return [
@@ -31,8 +31,11 @@ class EventController extends Controller {
 	 * @return mixed
 	 */
 	public function actionIndex(){
+		// $this->layout = "AdminLTE-layout";
 
-		$events = Event::find()->all();
+		$events = Event::find()
+			->where(['id_user' => Yii::$app->user->id])
+			->all();
 
 		$tasks = [];
 		foreach ($events as $mdl) {
@@ -67,7 +70,7 @@ class EventController extends Controller {
 	public function actionCreate($date){
 		$model = new Event();
 		$model->created = $date;
-
+		$model->id_user = Yii::$app->user->id;
 
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['index', 'id' => $model->id]);

@@ -21,5 +21,16 @@ return [
 			],
 		],
 	],
+	'controllerMap'	=> [
+		'migrate'	=>	[
+			'class' => 'bariew\moduleMigration\ModuleMigrateController',
+			'migrationTable' => 'migration',
+		],
+	],
+	'modules'   => [
+		'settings' => [
+			'class' => 'backend\modules\settings\Settings',
+		],
+	],
 	'params' => $params,
 ];

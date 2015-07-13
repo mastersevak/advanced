@@ -1,3 +1,5 @@
+<? use yii\helpers\Url;?>
+
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -102,7 +104,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="pages/calendar.html">
+				<a href="<?= Url::to(['/event/index'])?>">
 					<i class="fa fa-calendar"></i> <span>Calendar</span>
 					<small class="label pull-right bg-red">3</small>
 				</a>

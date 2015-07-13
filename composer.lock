@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f44e38f4b375d72ad8345da92a7c2421",
+    "hash": "a0109b87752002a887d9c73c2a877c9f",
     "packages": [
         {
             "name": "2amigos/yii2-bootstrap-form-helpers-library",
@@ -110,6 +110,44 @@
                 "yii2"
             ],
             "time": "2015-04-02 11:48:05"
+        },
+        {
+            "name": "bariew/yii2-module-migration-controller",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bariew/yii2-module-migration-controller.git",
+                "reference": "47b2cb1f84e38a9826adf99a117184ce4d098f36"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bariew/yii2-module-migration-controller/zipball/47b2cb1f84e38a9826adf99a117184ce4d098f36",
+                "reference": "47b2cb1f84e38a9826adf99a117184ce4d098f36",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bariew\\moduleMigration\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Bariev Pavel",
+                    "email": "bariew@yandex.ru"
+                }
+            ],
+            "description": "Runs module migrations from module 'migrations' folder",
+            "homepage": "https://github.com/bariew/yii2-module-migration-controller",
+            "keywords": [
+                "migration",
+                "yii2"
+            ],
+            "time": "2014-05-27 00:00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -978,12 +1016,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "d282f2da867d1d902e88d73e3bfe10cba7f50e9c"
+                "reference": "d2ca1acda268531da9b5a4c82ce01d0cdd682348"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d282f2da867d1d902e88d73e3bfe10cba7f50e9c",
-                "reference": "d282f2da867d1d902e88d73e3bfe10cba7f50e9c",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d2ca1acda268531da9b5a4c82ce01d0cdd682348",
+                "reference": "d2ca1acda268531da9b5a4c82ce01d0cdd682348",
                 "shasum": ""
             },
             "require": {
@@ -1058,7 +1096,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-07-11 18:26:24"
+            "time": "2015-07-12 21:45:55"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1292,12 +1330,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "6615c01b7b2a9c46f4cc426f860866a122eae0af"
+                "reference": "42bef724d0a241853ae67d6f091ffa43914de237"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/6615c01b7b2a9c46f4cc426f860866a122eae0af",
-                "reference": "6615c01b7b2a9c46f4cc426f860866a122eae0af",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/42bef724d0a241853ae67d6f091ffa43914de237",
+                "reference": "42bef724d0a241853ae67d6f091ffa43914de237",
                 "shasum": ""
             },
             "require": {
@@ -1336,7 +1374,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-06-23 08:30:36"
+            "time": "2015-07-12 21:01:08"
         },
         {
             "name": "phpspec/php-diff",

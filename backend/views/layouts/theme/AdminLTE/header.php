@@ -1,3 +1,4 @@
+<? use yii\helpers\Url;?>
 <header class="main-header">
 	<!-- Logo -->
 	<a href="index2.html" class="logo">
@@ -238,7 +239,7 @@
 								<a href="#" class="btn btn-default btn-flat">Profile</a>
 							</div>
 							<div class="pull-right">
-								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								<a href="<?= Url::to(['/site/logout']) ?>" class="btn btn-default btn-flat" data-method='post'>Sign out</a>
 							</div>
 						</li>
 					</ul>

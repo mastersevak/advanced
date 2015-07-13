@@ -25,7 +25,8 @@
         "wbraganca/yii2-dynamicform": "*",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-krajee-base": "dev-master",
-        "philippfrenzel/yii2fullcalendar": "*"
+        "philippfrenzel/yii2fullcalendar": "*",
+        "bariew/yii2-module-migration-controller": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
