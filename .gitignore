@@ -16,9 +16,9 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor/*
-!/vendor/kartik-v
-!/vendor/yiisoft
+#/vendor/*
+#!/vendor/yiisoft/*
+#!/vendor/kartik-v
 
 # composer itself is not needed
 composer.phar
