@@ -24,9 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?= $form->field($model, 'email') ?>
 				<?= $form->field($model, 'password')->passwordInput() ?>
 
-				<?
-					$authItems = ArrayHelper::map($authItems, 'name', 'name');
-				?>
+				<? $authItems = ArrayHelper::map($authItems, 'name', 'name'); ?>
+
 				<?= $form->field($model, 'permissions')->checkboxList($authItems) ?>
 
 				<div class="form-group">

@@ -51,10 +51,10 @@ class SignupForm extends Model{
 
 		if ($this->validate()) {
 			$user = new User();
-			$user->firstname = $this->first_name;
-			$user->lastname = $this->last_name;
-			$user->username = $this->username;
-			$user->email = $this->email;
+			$user->first_name	= $this->first_name;
+			$user->last_name	= $this->last_name;
+			$user->username		= $this->username;
+			$user->email		= $this->email;
 			$user->setPassword($this->password);
 			$user->generateAuthKey();
 			$user->save();
@@ -62,12 +62,15 @@ class SignupForm extends Model{
 			// lets add the permissions
 			$permissionList = $_POST['SignupForm']['permissions'];
 
-			foreach ($permissionList as  $permission) {
+			if(!empty($permissionList) ){
 
-				$newPermission = new AuthAssignment;
-				$newPermission->user_id		= $user->id;
-				$newPermission->item_name	= $permission;
-				$newPermission->save();
+				foreach ($permissionList as  $permission) {
+
+					$newPermission = new AuthAssignment;
+					$newPermission->user_id		= $user->id;
+					$newPermission->item_name	= $permission;
+					$newPermission->save();
+				}
 			}
 
 			return $user;

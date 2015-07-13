@@ -205,15 +205,19 @@
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="theme/AdminLTE-2.2.0/dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-						<span class="hidden-xs">Alexander Pierce</span>
+
+						<!-- username -->
+						<span class="hidden-xs">
+							<?= \Yii::$app->user->identity->last_name .' '. \Yii::$app->user->identity->first_name?>
+						</span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
 						<li class="user-header">
 							<img src="theme/AdminLTE-2.2.0/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-							<p>
-								Alexander Pierce - Web Developer
-								<small>Member since Nov. 2012</small>
+							<p>	<!-- username -->
+								<?= \Yii::$app->user->identity->last_name .' '. \Yii::$app->user->identity->first_name?> - Web Developer
+								<small>Member since <?= date('Y-m-d', \Yii::$app->user->identity->created_at) ?></small>
 							</p>
 						</li>
 						<!-- Menu Body -->
