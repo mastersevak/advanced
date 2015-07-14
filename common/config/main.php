@@ -6,8 +6,11 @@ return [
 			'class' => 'yii\caching\FileCache',
 		],
 		'urlManager' => [
-			'enablePrettyUrl'		=> true,
+			'class'					=> 'yii\web\UrlManager',
+			// Disable index.php
 			'showScriptName'		=> false,
+			// Disable r= routes
+			'enablePrettyUrl'		=> true,
 			'enableStrictParsing'	=> false,
 			'rules'	=> [
 				// rules User
@@ -17,7 +20,7 @@ return [
 				'user/<controller:\w+>/<action:\w+>'	=> 'user/<controller>/<action>',
 				'user/user/<action:\w+>/<id:\d+>'		=> 'user/<controller>/<action>',
 
-				// '/<action:(login|logout|registration|ajaxlogin|lock|unlock)>' => 'core/user/back/<action>', 
+				// '/<action:(login|logout|registration|ajaxlogin|lock|unlock)>' => 'core/user/back/<action>',
 				//login, logout - frontend
 				// '<action:(login|logout|registration|forgotpassword|resetpassword|changepassword|profile)>' => 'auth/<action>',
 
@@ -26,6 +29,10 @@ return [
 				'menu/<action:\w+>'	=> 'menu/menu/<action>',
 				'menu/<controller:\w+>/<action:\w+>'	=> 'menu/<controller>/<action>',
 			],
+		],
+		'urlManagerFrontend' => [
+			'class'					=> 'yii\web\UrlManager',
+			// here is your frontend URL manager config
 		],
 	],
 	'modules' => [
