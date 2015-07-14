@@ -10,5 +10,8 @@ return [
 		'menu' => [
 			'class' => 'common\modules\menu\Menu',
 		],
+		 'user' => [
+			'class' => 'common\modules\user\User',
+		],
 	],
 ];
