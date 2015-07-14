@@ -15,11 +15,6 @@ nbproject
 # windows thumbnail cache
 Thumbs.db
 
-# composer vendor dir
-#/vendor/*
-#!/vendor/yiisoft/*
-#!/vendor/kartik-v
-
 # composer itself is not needed
 composer.phar
 

@@ -1,6 +1,8 @@
 build
 docs
-vendor
+
+# --
+#vendor
 
 # cache directories
 Thumbs.db

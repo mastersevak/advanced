@@ -20,21 +20,21 @@ use yii\helpers\Html;
  */
 class TimePicker extends InputWidget
 {
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        Html::addCssClass($this->options, 'bfh-timepicker');
-        parent::init();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function init()
+	{
+		Html::addCssClass($this->options, 'bfh-timepicker');
+		parent::init();
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function run()
-    {
-        echo Html::tag('div', '', $this->options);
-        $this->registerPlugin('bfhtimepicker');
-    }
-} 
+	/**
+	 * @inheritdoc
+	 */
+	public function run()
+	{
+		echo Html::tag('div', '', $this->options);
+		$this->registerPlugin('bfhtimepicker');
+	}
+}

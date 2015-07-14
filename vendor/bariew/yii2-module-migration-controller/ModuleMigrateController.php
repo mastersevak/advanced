@@ -36,8 +36,6 @@ class ModuleMigrateController extends MigrateController
 	 */
 	public function beforeAction($action) {
 
-		echo "<pre>"; print_r( $action->request ); echo "</pre>"; exit;
-
 		if (!parent::beforeAction($action)) {
 			return false;
 		}
