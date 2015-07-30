@@ -11,7 +11,7 @@ return [
 			'showScriptName'		=> false,
 			// Disable r= routes
 			'enablePrettyUrl'		=> true,
-			'enableStrictParsing'	=> false,
+			// 'enableStrictParsing'	=> false,
 			'rules'	=> [
 				// rules User
 				'user'				=> 'user/user/index',
@@ -33,6 +33,7 @@ return [
 		'urlManagerFrontend' => [
 			'class'					=> 'yii\web\UrlManager',
 			// here is your frontend URL manager config
+			// echo Yii::$app->urlManagerFrontend->createUrl(...);
 		],
 	],
 	'modules' => [
