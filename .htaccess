@@ -1,7 +1,9 @@
-# RewriteEngine on
-# 	RewriteCond %{REQUEST_FILENAME} !-f
-# 	RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule . index.php
+# https://github.com/ilopX/yii2-basic-htaccess
+
+RewriteEngine on
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
 
 # <IfModule mod_rewrite.c>
 # 	# deal with admin first

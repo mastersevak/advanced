@@ -52,7 +52,7 @@ class SiteController extends Controller {
 	}
 
 	public function actionIndex(){
-		$this->layout = "AdminLTE-layout";
+		// $this->layout = "AdminLTE-layout";
 
 		// im sepakan component@ poxi convert dolar@ hashvum e dramov
 		Yii::$app->MyComponent->currencyConverter('USD', 'AMD', 100);
@@ -64,9 +64,8 @@ class SiteController extends Controller {
 
 		$this->layout = 'loginLayout';
 
-		if (!\Yii::$app->user->isGuest) {
+		if (!\Yii::$app->user->isGuest)
 			return $this->goHome();
-		}
 
 		$model = new LoginForm();
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
