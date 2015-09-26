@@ -6,14 +6,14 @@ $params = array_merge(
 	require(__DIR__ . '/params-local.php')
 );
 
-return [
+return  [
 	'id' => 'app-backend',
 	'basePath' => dirname(__DIR__),
 	'controllerNamespace' => 'backend\controllers',
-	'language' => 'en',
-	'sourceLanguage' => 'en',
-	'bootstrap' => ['log'],
-	'modules' => [
+	'language'		=> 'en',
+	'sourceLanguage'=> 'en',
+	'bootstrap'	=> ['log'],
+	'modules'	=> [
 		'settings' => [
 			'class' => 'backend\modules\settings\Settings',
 		],
@@ -30,7 +30,7 @@ return [
 		'urlManager' => [
 			'class'					=> 'yii\web\UrlManager',
 			// Disable index.php
-			'showScriptName'		=> true,
+			'showScriptName'		=> false,
 			// Disable r= routes
 			'enablePrettyUrl'		=> true,
 			// 'enableStrictParsing'	=> false,
