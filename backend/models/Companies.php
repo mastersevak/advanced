@@ -21,7 +21,7 @@ class Companies extends \yii\db\ActiveRecord{
 	/**
 	 * @inheritdoc
 	 */
-	public $file;
+	public $file, $avatar;
 	public static function tableName(){
 		return 'companies';
 	}
@@ -49,7 +49,7 @@ class Companies extends \yii\db\ActiveRecord{
 			'company_naem'			=> 'Company Name',
 			'company_email'			=> 'Company Email',
 			'company_addres' 		=> 'Company Addres',
-			'file' => Yii::t('settings', 'Logo'),
+			'file'					=> Yii::t('settings', 'Logo'),
 			'company_creates_date'	=> 'Company Creates Date',
 			'company_status' 		=> 'Company Status',
 		];

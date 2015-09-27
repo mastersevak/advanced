@@ -25,7 +25,11 @@ class Locations extends \yii\db\ActiveRecord{
 	 */
 	public function rules(){
 		return [
+			// unique
+			[['zip_code'], 'unique'],
+			// required
 			[['zip_code', 'city', 'province'], 'required'],
+			// string
 			[['zip_code'], 'string', 'max' => 20],
 			[['city', 'province'], 'string', 'max' => 100]
 		];

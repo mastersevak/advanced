@@ -10,59 +10,57 @@ use backend\models\Locations;
 /**
  * LocationsSearch represents the model behind the search form about `backend\models\Locations`.
  */
-class LocationsSearch extends Locations
-{
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['location_id'], 'integer'],
-            [['zip_code', 'city', 'province'], 'safe'],
-        ];
-    }
+class LocationsSearch extends Locations {
 
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules(){
+		return [
+			[['location_id'], 'integer'],
+			[['zip_code', 'city', 'province'], 'safe'],
+		];
+	}
 
-    /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
-     * @return ActiveDataProvider
-     */
-    public function search($params)
-    {
-        $query = Locations::find();
+	/**
+	 * @inheritdoc
+	 */
+	public function scenarios(){
+		// bypass scenarios() implementation in the parent class
+		return Model::scenarios();
+	}
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
+	/**
+	 * Creates data provider instance with search query applied
+	 *
+	 * @param array $params
+	 *
+	 * @return ActiveDataProvider
+	 */
+	public function search($params){
 
-        $this->load($params);
+		$query = Locations::find();
 
-        if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
-            return $dataProvider;
-        }
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
 
-        $query->andFilterWhere([
-            'location_id' => $this->location_id,
-        ]);
+		$this->load($params);
 
-        $query->andFilterWhere(['like', 'zip_code', $this->zip_code])
-            ->andFilterWhere(['like', 'city', $this->city])
-            ->andFilterWhere(['like', 'province', $this->province]);
+		if (!$this->validate()) {
+			// uncomment the following line if you do not want to return any records when validation fails
+			// $query->where('0=1');
+			return $dataProvider;
+		}
 
-        return $dataProvider;
-    }
+		$query->andFilterWhere([
+			'location_id' => $this->location_id,
+		]);
+
+		$query->andFilterWhere(['like', 'zip_code', $this->zip_code])
+			->andFilterWhere(['like', 'city', $this->city])
+			->andFilterWhere(['like', 'province', $this->province]);
+
+		return $dataProvider;
+	}
 }

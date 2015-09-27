@@ -33,6 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
 		'columns'		=> [
 			['class' => 'yii\grid\SerialColumn'],
 			[
+				'attribute'	=> 'avatar',
+				'format'	=> 'html',
+				'value'		=> function ($data){
+					return Html::img(Yii::getAlias('@web').'/uploades/test.jpg', ['height' => '50px']);
+				}
+			],
+			[
 				'attribute'	=> 'company_naem',
 				'format' => 'raw',
 				'value'		=> function ($data){

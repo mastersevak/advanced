@@ -8,6 +8,8 @@ use backend\models\DepartmentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
+
 
 /**
  * DepartmentsController implements the CRUD actions for Departments model.
@@ -68,7 +70,8 @@ class DepartmentsController extends Controller {
 				$model->department_created_date = date('Y-m-d h:m:s');
 				$model->save();
 				return $this->redirect(['view', 'id' => $model->department_id]);
-			} else {
+			}
+			else {
 				return $this->render('create', [
 					'model' => $model,
 				]);

@@ -29,7 +29,8 @@ class Model extends \yii\base\Model {
 			foreach ($post as $i => $item) {
 				if (isset($item['id']) && !empty($item['id']) && isset($multipleModels[$item['id']])) {
 					$models[] = $multipleModels[$item['id']];
-				} else {
+				} 
+				else {
 					$models[] = new $modelClass;
 				}
 			}
