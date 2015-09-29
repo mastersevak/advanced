@@ -15,6 +15,10 @@ use yii\web\ForbiddenHttpException;
 /**
  * CompaniesController implements the CRUD actions for Companies model.
  */
+// inclode global functions
+// var_dump( Yii::getAlias('@webroot').'/Globals.php' ); exit;
+require_once(Yii::getAlias('@webroot').'/Globals.php');
+
 class CompaniesController extends Controller{
 
 	public function behaviors(){
