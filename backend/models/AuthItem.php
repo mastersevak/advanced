@@ -20,74 +20,66 @@ use Yii;
  * @property AuthItemChild[] $authItemChildren
  * @property AuthItemChild[] $authItemChildren0
  */
-class AuthItem extends \yii\db\ActiveRecord
-{
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'auth_item';
-    }
+class AuthItem extends \yii\db\ActiveRecord{
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName(){
+		return 'auth_item';
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['name', 'type'], 'required'],
-            [['type', 'created_at', 'updated_at'], 'integer'],
-            [['description', 'data'], 'string'],
-            [['name', 'rule_name'], 'string', 'max' => 64]
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules(){
+		return [
+			[['name', 'type'], 'required'],
+			[['type', 'created_at', 'updated_at'], 'integer'],
+			[['description', 'data'], 'string'],
+			[['name', 'rule_name'], 'string', 'max' => 64]
+		];
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'name' => Yii::t('backend', 'Name'),
-            'type' => Yii::t('backend', 'Type'),
-            'description' => Yii::t('backend', 'Description'),
-            'rule_name' => Yii::t('backend', 'Rule Name'),
-            'data' => Yii::t('backend', 'Data'),
-            'created_at' => Yii::t('backend', 'Created At'),
-            'updated_at' => Yii::t('backend', 'Updated At'),
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels(){
+		return [
+			'name' => Yii::t('backend', 'Name'),
+			'type' => Yii::t('backend', 'Type'),
+			'description' => Yii::t('backend', 'Description'),
+			'rule_name' => Yii::t('backend', 'Rule Name'),
+			'data' => Yii::t('backend', 'Data'),
+			'created_at' => Yii::t('backend', 'Created At'),
+			'updated_at' => Yii::t('backend', 'Updated At'),
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthAssignments()
-    {
-        return $this->hasMany(AuthAssignment::className(), ['item_name' => 'name']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAuthAssignments(){
+		return $this->hasMany(AuthAssignment::className(), ['item_name' => 'name']);
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRuleName()
-    {
-        return $this->hasOne(AuthRule::className(), ['name' => 'rule_name']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getRuleName(){
+		return $this->hasOne(AuthRule::className(), ['name' => 'rule_name']);
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthItemChildren()
-    {
-        return $this->hasMany(AuthItemChild::className(), ['parent' => 'name']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAuthItemChildren(){
+		return $this->hasMany(AuthItemChild::className(), ['parent' => 'name']);
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthItemChildren0()
-    {
-        return $this->hasMany(AuthItemChild::className(), ['child' => 'name']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAuthItemChildren0(){
+		return $this->hasMany(AuthItemChild::className(), ['child' => 'name']);
+	}
 }
