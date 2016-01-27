@@ -108,7 +108,15 @@ return  [
 					'basePath'	=> "@app/messages",
 					'sourceLanguage' => 'en',
 					'fileMap' => ['yii'=>'yii.php']
-				]
+				],
+				'product'=>[
+					'class' => 'yii\i18n\PhpMessageSource',
+					'basePath' => "@app/messages",
+					'sourceLanguage' => 'en',
+					'fileMap' => [
+						'app'=>'product.php'
+					]
+				],
 			]
 		],
 		'MyComponent' => [
